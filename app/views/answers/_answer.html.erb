@@ -1,0 +1,68 @@
+ <% question = Question.find(answer.question_id) %> 
+
+<% answer.corrections.each do |correction| %>
+ <% if question.id == answer.question_id && correction.accept == true %>
+	 <div class="media m-t-2">
+	      <div class="media-body">
+	      		<p><%= answer.text %> <b class="correction-text"><%= correction.text %></b> - <strong><%= answer.user.name %></strong></p>
+	      </div>
+	      <a  data-toggle="collapse" href="#collapseExample<%= answer.id + 1 %>" aria-expanded="false" aria-controls="collapseExample", title='Написать отзыв', data-toggle ='tooltip', data-placement = 'top'  >
+                  		Предложить правку
+          </a><br> <br>
+          <div id="correction<%= answer.id %>">
+
+                 	 <%= render :partial => 'corrections/correction', :collection => answer.corrections %>
+         </div>
+          <div class="collapse" id="collapseExample<%= answer.id + 1 %>">
+                      <div class="card card-block">
+                        
+                         <%= form_for([ question, answer, Correction.new], remote: true) do |f| %>
+								<ul class="errors" style="list-style: none;"></ul>
+								
+								<div class="form-group">
+									<%= f.text_area :text, autofocus: true, cols: "40", rows: "2", class:"form-control" %>
+								</div>
+								<%= f.text_field :question_id, value: answer.question.id, type: "hidden"  %>
+								<%= f.text_field :answer_id, value: answer.id, type: "hidden"  %>
+
+
+
+								<%= f.submit "Предложить правку",  class: "btn btn-primary pull-left" %>
+						<% end %>	
+                        
+                      </div>
+           </div><br>
+	 </div>
+<% end %>
+<% if question.id == answer.question_id && correction.accept == false %>
+	 <div class="media m-t-2">
+	      <div class="media-body">
+	      		<p><%= answer.text %> - <strong><%= answer.user.name %></strong></p>
+	      </div>
+	      <a  data-toggle="collapse" href="#collapseExample<%= answer.id + 1 %>" aria-expanded="false" aria-controls="collapseExample", title='Написать отзыв', data-toggle ='tooltip', data-placement = 'top'  >
+                  		Предложить правку
+          </a><br> <br>
+         
+          <div class="collapse" id="collapseExample<%= answer.id + 1 %>">
+                      <div class="card card-block">
+                        
+                         <%= form_for([ question, answer, Correction.new], remote: true) do |f| %>
+								<ul class="errors" style="list-style: none;"></ul>
+								
+								<div class="form-group">
+									<%= f.text_area :text, autofocus: true, cols: "40", rows: "2", class:"form-control" %>
+								</div>
+								<%= f.text_field :question_id, value: answer.question.id, type: "hidden"  %>
+								<%= f.text_field :answer_id, value: answer.id, type: "hidden"  %>
+
+
+
+								<%= f.submit "Предложить правку",  class: "btn btn-primary pull-left" %>
+						<% end %>	
+                        
+                      </div>
+           </div><br>
+	 </div>
+
+<% end %>
+ <% end %>

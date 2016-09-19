@@ -1,0 +1,13 @@
+<%= form_for([current_user.questions.build], remote: true) do |f| %>
+	<ul class="errors" style="list-style: none;"></ul>
+	<div class="form-group">
+		<p><strong>Заголовок вопроса:</strong></p>
+		<%= f.text_field :title, autofocus: true, class:"form-control" %>
+	</div>
+	<div class="form-group">
+	    <p><strong>Подробное описание ситуации:</strong></p>
+		<%= f.text_area :text, autofocus: true, cols: "40", rows: "2", class:"form-control" %>
+	</div>
+
+	<%= f.submit "Задать вопрос",  class: "btn btn-primary pull-left" %>
+<% end %><br>

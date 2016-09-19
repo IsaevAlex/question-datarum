@@ -1,0 +1,45 @@
+<% unless user_signed_in? %>
+      <div class="row">
+           <div class="col-md-8 col-md-offset-4">
+              <h1>Тестовое задание "Датарум"</h1>
+              <div class="col-md-offset-1">
+                  <%= link_to 'Войти', new_user_session_path, class:"btn btn-primary" %>
+                  <%= link_to 'Зарегистрироваться', new_user_registration_path, class:"btn btn-primary" %>
+              </div>
+              
+           </div>
+      </div>
+<% else %>
+      <div class="row">
+         <div class="col-md-8 col-md-offset-4">
+             <h1>Тестовое задание "Датарум"</h1>
+             <div class="col-md-offset-2">
+                  <div class="comment-button">
+                    <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample", title='Написать отзыв', data-toggle ='tooltip', data-placement = 'top' >
+                        Задать вопрос
+                    </a><br>  
+                 </div>
+                  
+             </div>
+          </div>
+          <div class="col-md-8 col-md-offset-2">
+              <div class="collapse" id="collapseExample">
+                      <div class="card card-block">
+                        
+                             <div id="question">
+                                  <%= render :partial => 'questions/form', :locals => {:question => @question} %>
+                             </div> <br>
+                        
+                      </div>
+              </div><br>
+          </div>
+             
+         
+         <div id="com">
+             <%= render :partial => 'questions/question', :collection => @questions.order("created_at DESC") %>
+        </div>
+        
+      </div>
+
+
+<% end %>
