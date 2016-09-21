@@ -22,6 +22,7 @@
  	padding-left: 10px;  
  }
  
- .correction-text{
- 	background: #c5fde0; 
- }
+
+ a:hover + .correction-text {
+    background: #c5fde0;
+}

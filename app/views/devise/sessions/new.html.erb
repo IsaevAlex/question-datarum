@@ -17,19 +17,12 @@
               <div class="form-group">
                   <%= f.password_field :password, :placeholder => 'Пароль', class:"form-control form-control-tag" %>
               </div>
-                 
-              <% if devise_mapping.rememberable? -%>
-                  <div class="field">
-                      <%= f.check_box :remember_me %>
-                      <%= f.label :remember_me %>
-                  </div>
-              <% end -%>
 
               <div class="col-md-offset-4">
                   <%= f.submit "Войти в личный кабинет", class: "btn btn-primary " %>
               </div>
     <% end %>
-    
+
     <%= link_to "Назад", root_path %>
 
     </div>

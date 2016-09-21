@@ -8,7 +8,7 @@
 	      		 	<% end %>
 	      		 	<%= correction.text %> - <strong><%= correction.user.name %></strong> 
 					<% if correction.accept == true %>
-						принято в <%= correction.updated_at.strftime("%Y-%m-%d") %>
+						<a>принято</a> в <%= correction.updated_at.strftime("%Y-%m-%d") %>
 					<% else %>
 						добавлено в <%= correction.created_at.strftime("%Y-%m-%d") %>
 					<% end %>
