@@ -21,8 +21,12 @@
  	border-left: 1px solid black;
  	padding-left: 10px;  
  }
+
+ .correction-text {
+ 	background: #c5fde0;
+ }
  
 
- a:hover + .correction-text {
+ .correction-link:hover+.correction-text {
     background: #c5fde0;
 }

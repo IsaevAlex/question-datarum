@@ -5,13 +5,13 @@
 	 <div class="media m-t-2">
 	 	  
 	      	<div class="media-body">
-	      	<p><%= answer.text %>
-	      	<% answer.corrections.each do |correction| %>
-	      		<% if correction.accept == true %>
-		      			 <b class="correction-text"><%= correction.text %></b> 
-		      		<% end %>
-		    <% end %>
-		     - <strong><%= answer.user.name %></strong> добавлено в <%= answer.created_at.strftime("%Y-%m-%d") %></p>
+		      	<p><%= answer.text %>
+		      	<% answer.corrections.each do |correction| %>
+		      		<% if correction.accept == true %>
+			      			 <span class="correction-text"><%= correction.text %></span> 
+			      		<% end %>
+			    <% end %>
+			     - <strong><%= answer.user.name %></strong> добавлено в <%= answer.created_at.strftime("%Y-%m-%d") %></p>
 	      	</div>
 	      
 
