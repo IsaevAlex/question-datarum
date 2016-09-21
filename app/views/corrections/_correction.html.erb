@@ -3,10 +3,14 @@
 	      		<p> 
 	      		    <% if correction.accept == true %>
 	      		 		<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+	      		 	<% else %>
+	      		 		<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 	      		 	<% end %>
-	      		 	<%= correction.text %> - <strong><%= correction.user.name %></strong>
+	      		 	<%= correction.text %> - <strong><%= correction.user.name %></strong> 
 					<% if correction.accept == true %>
-						принято 
+						принято в <%= correction.updated_at.strftime("%Y-%m-%d") %>
+					<% else %>
+						добавлено в <%= correction.created_at.strftime("%Y-%m-%d") %>
 					<% end %>
 	      		</p>
 	      		<% if correction.accept == false %>
