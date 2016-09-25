@@ -8,25 +8,21 @@
 		      	<p><%= answer.text %>
 		      	<% answer.corrections.each do |correction| %>
 		      		<% if correction.accept == true %>
-			      			 <span class="correction-text"><%= correction.text %></span> 
+			      			 <div id="twg"><%= correction.text %></div>
 			      		<% end %>
 			    <% end %>
-			     - <strong><%= answer.user.name %></strong> добавлено в <%= answer.created_at.strftime("%Y-%m-%d") %></p>
+			     - <strong><%= answer.user.name %></strong> добавлено <%= l answer.created_at, format: :long %></p>
 	      	</div>
 	      
 
 	      <a  data-toggle="collapse" href="#collapseExample<%= answer.id + 1 %>" aria-expanded="false" aria-controls="collapseExample", title='Написать отзыв', data-toggle ='tooltip', data-placement = 'top'  >
                   		Предложить правку
           </a><br> <br>
-          <div id="correction<%= answer.id %>">
-
-                 	 <%= render :partial => 'corrections/correction', :collection => answer.corrections %>
-         </div>
-          <div class="collapse" id="collapseExample<%= answer.id + 1 %>">
+           <div class="collapse" id="collapseExample<%= answer.id + 1 %>">
                       <div class="card card-block">
                         
                          <%= form_for([ question, answer, Correction.new], remote: true) do |f| %>
-								<ul class="errors" style="list-style: none;"></ul>
+								<ul class="corrections" style="list-style: none;"></ul>
 								
 								<div class="form-group">
 									<%= f.text_area :text, autofocus: true, cols: "40", rows: "2", class:"form-control" %>
@@ -37,10 +33,15 @@
 
 
 								<%= f.submit "Предложить правку",  class: "btn btn-primary pull-left" %>
-						<% end %>	
+						<% end %><br>	
                         
-                      </div>
+                      </div><br>
            </div><br>
+          <div id="correction<%= answer.id %>" class="cor">
+
+                 	 <%= render :partial => 'corrections/correction', :collection => answer.corrections %>
+         </div>
+         
 	 </div>
 <% end %>
 

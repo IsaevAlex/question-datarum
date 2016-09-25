@@ -1,2 +1,10 @@
+$("ul.questions").html("")
+<% if @question.errors.any? %>
+	  <% @question.errors.full_messages.each do |message| %>
+	    	$("ul.errors").append($("<li />").html("<%= message.html_safe %>"))
+	  <% end %>
+<% else %>
+	  $("ul.questions").append($("<li />").html("Вы задали вопрос"))
+	  $("<%= escape_javascript(render @question) %>").appendTo("#com");
+<% end %>
 
-$("<%= escape_javascript(render @question) %>").appendTo("#com");

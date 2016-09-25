@@ -1,5 +1,5 @@
 <%= form_for([current_user.questions.build], remote: true) do |f| %>
-	<ul class="errors" style="list-style: none;"></ul>
+	<ul class="questions" style="list-style: none;"></ul>
 	<div class="form-group">
 		<p><strong>Заголовок вопроса:</strong></p>
 		<%= f.text_field :title, autofocus: true, class:"form-control" %>

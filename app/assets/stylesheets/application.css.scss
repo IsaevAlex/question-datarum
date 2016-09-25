@@ -22,11 +22,7 @@
  	padding-left: 10px;  
  }
 
- .correction-text {
- 	background: #c5fde0;
- }
  
-
- .correction-link:hover+.correction-text {
+.media-body>#ong:hover + #twg  {
     background: #c5fde0;
 }

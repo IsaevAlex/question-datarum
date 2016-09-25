@@ -1,1 +1,9 @@
-$('#answer<%= @answer.question.id %>').html("<%=j render @answer %>");
+$("ul.answers").html("")
+<% if @answer.errors.any? %>
+	  <% @answer.errors.full_messages.each do |message| %>
+	    	$("ul.errors").append($("<li />").html("<%= message.html_safe %>"))
+	  <% end %>
+<% else %>
+	  $("ul.answers").append($("<li />").html("Вы дали ответ"))
+	  $('#answer<%= @answer.question.id %>').html("<%=j render @answer %>");
+<% end %>

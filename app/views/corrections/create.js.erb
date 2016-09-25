@@ -1,1 +1,10 @@
-$('#correction<%= @correction.answer.id %>').html("<%=j render @correction %>");
+$("ul.corrections").html("")
+<% if @correction.errors.any? %>
+	  <% @correction.errors.full_messages.each do |message| %>
+	    	$("ul.errors").append($("<li />").html("<%= message.html_safe %>"))
+	  <% end %>
+<% else %>
+	  $("ul.corrections").append($("<li />").html("Вы сделали поправку"))
+	  $('#correction<%= @correction.answer.id %>').html("<%=j render @correction %>");
+<% end %>
+
