@@ -1,36 +1,31 @@
 <div class="media m-t-2">
-	      <div class="media-body">
-	      		<p> 
-	      		    <% if correction.accept == true %>
-	      		 		<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+		<div class="media-body">
+	    		<p> 
+	      			<% if correction.accept == true %>
+	      		 			<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
 	      		 	<% else %>
-	      		 		<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+	      		 			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 	      		 	<% end %>
-	      		 	<%= correction.text %> - <strong><%= correction.user.name %></strong> 
-	      		 	добавил <%= l correction.created_at, format: :long %>
+	      		 	<%= correction.text %> - <strong> <%= correction.user.name %></strong> добавил <%= l correction.created_at, format: :long %>
 					<% if correction.accept == true %>
-							<div id="ong">, принято</div> <%= l correction.created_at, format: :long %>
+							<a href="" id="ong">, принято </a> <%= l correction.created_at, format: :long %>
 					<% end %>
 	      		</p>
-	      		<% if correction.accept == false %>
-		      		<a  data-toggle="collapse" href="#collapseExample<%= correction.id + 1 %>" aria-expanded="false" aria-controls="collapseExample", title='Написать отзыв', data-toggle ='tooltip', data-placement = 'top'  >
+	      		<% if correction.accept == false && correction.user_id == correction.question.user_id %>
+		      			<a  data-toggle="collapse" href="#collapseExample<%= correction.id + 1 %>" aria-expanded="false" aria-controls="collapseExample", title='Принять правку', data-toggle ='tooltip', data-placement = 'top'  >
 	                  		Принять правку
-	          		</a><br> <br>
-	          		<div class="collapse" id="collapseExample<%= correction.id + 1 %>">
-	                      <div class="card card-block">
-	                      		<form>
-	  								<div class="form-group">
-	    								<label for="text">Принять правку:</label>
-	    								<input type="text" class="form-control" id="text" value="<%= correction.answer.text %> <%= correction.text %>">
-	  								</div>
-	  						
-	  									<%= link_to "Принять правку" , correct_question_answer_correction_path(correction, type: "correct", answer_id: correction.answer.id, id: correction.id,  accept: true ), method: :put , class:"btn btn-primary pull-left"  %>
-	  								
-								</form>
-								
-
-	                      </div>
-	                </div>
+	          			</a><br> <br>
+	          			<div class="collapse" id="collapseExample<%= correction.id + 1 %>">
+	                      		<div class="card card-block">
+	                      				<form>
+			  								<div class="form-group">
+			    								<label for="text">Принять правку:</label>
+			    								<input type="text" class="form-control" id="text" value="<%= correction.answer.text %> <%= correction.text %>">
+			  								</div>
+	  										<%= link_to "Принять правку" , correct_question_answer_correction_path(correction, type: "correct", answer_id: correction.answer.id, id: correction.id,  accept: true ), method: :put , class:"btn btn-primary pull-left"  %>
+										</form>
+							     </div>
+	                     </div>
                 <% end %>
 	      </div>
 </div>	     

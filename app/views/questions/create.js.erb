@@ -6,5 +6,6 @@ $("ul.questions").html("")
 <% else %>
 	  $("ul.questions").append($("<li />").html("Вы задали вопрос"))
 	  $("<%= escape_javascript(render @question) %>").appendTo("#com");
+	  $("#question").hide();
 <% end %>
 

@@ -6,4 +6,5 @@ $("ul.answers").html("")
 <% else %>
 	  $("ul.answers").append($("<li />").html("Вы дали ответ"))
 	  $('#answer<%= @answer.question.id %>').html("<%=j render @answer %>");
+	  $("#answer").hide();
 <% end %>

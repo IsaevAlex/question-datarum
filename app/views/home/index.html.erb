@@ -6,8 +6,7 @@
                   <%= link_to 'Войти', new_user_session_path, class:"btn btn-primary" %>
                   <%= link_to 'Зарегистрироваться', new_user_registration_path, class:"btn btn-primary" %>
               </div>
-              
-           </div>
+            </div>
       </div>
 <% else %>
       <div class="row">
@@ -25,21 +24,14 @@
           <div class="col-md-8 col-md-offset-2">
               <div class="collapse" id="collapseExample">
                       <div class="card card-block">
-                        
                              <div id="question">
                                   <%= render :partial => 'questions/form', :locals => {:question => @question} %>
                              </div> <br>
-                        
                       </div>
               </div><br>
           </div>
-             
-         
-         <div id="com">
-             <%= render :partial => 'questions/question', :collection => @questions.order("created_at DESC") %>
-        </div>
-        
+          <div id="com">
+                <%= render :partial => 'questions/question', :collection => @questions.order("created_at DESC") %>
+          </div>
       </div>
-
-
 <% end %>

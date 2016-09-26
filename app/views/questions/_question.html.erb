@@ -9,21 +9,24 @@
              </a><br> <br>
              <div class="collapse" id="collapseExample<%= question.id + 1 %>">
                   <div class="card card-block">
-                      <%= form_for([question, Answer.new(question_id: question.id)], remote: true) do |f| %>
-                          <ul class="answers" style="list-style: none;"></ul>
-                          <div class="form-group">
-                               <%= f.text_area :text, autofocus: true, cols: "40", rows: "2", class:"form-control" %>
-                          </div>
-                          <%= f.text_field :question_id, value: question.id, type: "hidden"  %>
-                          <%= f.submit "Дать ответ",  class: "btn btn-primary pull-left" %>
-                      <% end %> <br>
+                      <div id="answer">
+                          <%= form_for([question, Answer.new(question_id: question.id)], remote: true) do |f| %>
+                            <ul class="answers" style="list-style: none;"></ul>
+                            <div class="form-group">
+                                 <%= f.text_area :text, autofocus: true, cols: "40", rows: "2", class:"form-control" %>
+                            </div>
+                            <%= f.text_field :question_id, value: question.id, type: "hidden"  %>
+                            <%= f.submit "Дать ответ",  class: "btn btn-primary pull-left" %>  
+                            
+                            
+                        <% end %> <br>
+                      </div>
                   </div>
              </div><br> 
              <div id="answer<%= question.id %>">
                   <%= render :partial => 'answers/answer', :collection => question.answers %>
         		 </div>
-   				   
-   			 </div>
+   			</div>
 		</div>		
 	</div>
 </div><br>
