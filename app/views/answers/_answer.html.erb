@@ -5,8 +5,8 @@
 		      	<p><%= answer.text %>
 		      	<% answer.corrections.each do |correction| %>
 		      		<% if correction.accept == true %>
-			      			 <span id="twg"><%= correction.text %></span>
-			      		<% end %>
+			      			 <span class="e" id="<%= correction.id + 1000 %>"><%= correction.text %></span>
+			      	<% end %>
 			    <% end %>
 			    - <strong><%= answer.user.name %></strong> добавлено <%= l answer.created_at, format: :long %></p>
 	      </div>
@@ -32,6 +32,7 @@
 		   		<%= render :partial => 'corrections/correction', :collection => answer.corrections %>
            </div>
      </div>
+     
 <% end %>
 
  

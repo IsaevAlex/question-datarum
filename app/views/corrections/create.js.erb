@@ -7,5 +7,6 @@ $("ul.corrections").html("")
 	  $("ul.corrections").append($("<li />").html("Вы сделали поправку"))
 	  $('#correction<%= @correction.answer.id %>').html("<%=j render @correction %>");
 	  $("#correction").hide();
+	  
 <% end %>
 
