@@ -8,7 +8,7 @@
 	      		 	<% end %>
 	      		 	<%= correction.text %> - <strong> <%= correction.user.name %></strong> добавил <%= l correction.created_at, format: :long %>
 					<% if correction.accept == true %>
-							<div href="" class="instance" id="<%= correction.id %>">, принято </div> <%= l correction.created_at, format: :long %>
+							<span id="<%= correction.id %>">, принято </span> <%= l correction.created_at, format: :long %>
 					<% end %>
 	      		</p>
 	      		<% if correction.accept == false && correction.user_id == correction.question.user_id %>
