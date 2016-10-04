@@ -6,7 +6,5 @@ $("ul.corrections").html("")
 <% else %>
 	  $("ul.corrections").append($("<li />").html("Вы сделали поправку"))
 	  $('#correction<%= @correction.answer.id %>').html("<%=j render @correction %>");
-	  
-	  
 <% end %>
 

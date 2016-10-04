@@ -4,9 +4,9 @@
       <br>    
   </div> 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-          <%= devise_error_messages! %>  
-      <div class="col-md-10 col-md-offset-1 content">
+       <div class="col-md-10 col-md-offset-1 content">
           <div class="col-md-8 col-md-offset-2">
+              <%= devise_error_messages! %>  
               <div class="form-group">
                     <%= f.text_field :name, :placeholder => "Фамилия и имя или же название организации", autofocus: true, class:"form-control" %>
               </div>
